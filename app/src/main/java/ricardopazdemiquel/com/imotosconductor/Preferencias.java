@@ -32,7 +32,7 @@ import ricardopazdemiquel.com.imotosconductor.utiles.MapService2;
 import ricardopazdemiquel.com.imotosconductor.utiles.Token;
 
 
-public class Preferencias extends AppCompatActivity implements View.OnClickListener{
+public class Preferencias extends AppCompatActivity implements View.OnClickListener {
 
 
     private LinearLayout liner_ver_perfil;
@@ -59,21 +59,21 @@ public class Preferencias extends AppCompatActivity implements View.OnClickListe
         liner_sign_out.setOnClickListener(this);
         liner_ver_perfil.setOnClickListener(this);
 
-       usr_log = getUsr_log();
+        usr_log = getUsr_log();
         if (usr_log != null) {
             try {
                 String nombre = usr_log.getString("nombre");
                 String apellido_pa = usr_log.getString("apellido_pa");
                 String apellido_ma = usr_log.getString("apellido_ma");
                 text_nombre.setText(nombre);
-                text_apellidos.setText(apellido_pa+" "+apellido_ma);
-                if(usr_log.getString("foto_perfil").length()>0){
-                    new AsyncTaskLoadImage(img_photo).execute(getString(R.string.url_foto)+usr_log.getString("foto_perfil"));
+                text_apellidos.setText(apellido_pa + " " + apellido_ma);
+                if (usr_log.getString("foto_perfil").length() > 0) {
+                    new AsyncTaskLoadImage(img_photo).execute(getString(R.string.url_foto) + usr_log.getString("foto_perfil"));
                 }
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-        }else{
+        } else {
             Toast.makeText(Preferencias.this, "Hubo un error al conectarse al servidor.", Toast.LENGTH_SHORT).show();
             Log.e(Contexto.APP_TAG, "Hubo un error al conectarse al servidor.");
         }
@@ -90,7 +90,7 @@ public class Preferencias extends AppCompatActivity implements View.OnClickListe
                 return super.onOptionsItemSelected(item);
         }
     }
-    
+
     @Override
     public void onBackPressed() {
         finish();
@@ -112,24 +112,26 @@ public class Preferencias extends AppCompatActivity implements View.OnClickListe
             }
         }
     }
-private JSONObject usr_log;
+
+    private JSONObject usr_log;
+
     @Override
     public void onClick(View view) {
-        switch (view.getId()){
+        switch (view.getId()) {
             case R.id.liner_sign_out:
 
-                SharedPreferences preferencias = getSharedPreferences("myPref",MODE_PRIVATE);
-               SharedPreferences.Editor editor = preferencias.edit();
+                SharedPreferences preferencias = getSharedPreferences("myPref", MODE_PRIVATE);
+                SharedPreferences.Editor editor = preferencias.edit();
                 editor.putString("usr_log", "");
                 editor.commit();
-                Intent i =new Intent(Preferencias.this, MapService2.class);
+                Intent i = new Intent(Preferencias.this, MapService2.class);
                 stopService(i);
                 try {
                     new Desconectarse(usr_log.getInt("id"), Token.currentToken).execute();
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-                Intent intent = new Intent(Preferencias.this,  Carga.class);
+                Intent intent = new Intent(Preferencias.this, Carga.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
 
@@ -144,36 +146,42 @@ private JSONObject usr_log;
     }
 
 
-    public class AsyncTaskLoadImage  extends AsyncTask<String, String, Bitmap> {
+    public class AsyncTaskLoadImage extends AsyncTask<String, String, Bitmap> {
         private final static String TAG = "AsyncTaskLoadImage";
         private ImageView imageView;
+
         public AsyncTaskLoadImage(ImageView imageView) {
             this.imageView = imageView;
         }
+
         @Override
         protected Bitmap doInBackground(String... params) {
             Bitmap bitmap = null;
             try {
                 URL url = new URL(params[0]);
-                bitmap = BitmapFactory.decodeStream((InputStream)url.getContent());
+                bitmap = BitmapFactory.decodeStream((InputStream) url.getContent());
             } catch (IOException e) {
                 Log.e(TAG, e.getMessage());
             }
             return bitmap;
         }
+
         @Override
         protected void onPostExecute(Bitmap bitmap) {
             imageView.setImageBitmap(bitmap);
         }
     }
+
     private class Desconectarse extends AsyncTask<Void, String, String> {
-        private int  id  ;
-        private String nombre ;
-        public Desconectarse(int id ,String nombre ) {
-            this.id= id;
-            this.nombre= nombre;
+        private int id;
+        private String nombre;
+
+        public Desconectarse(int id, String nombre) {
+            this.id = id;
+            this.nombre = nombre;
 
         }
+
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
@@ -181,10 +189,10 @@ private JSONObject usr_log;
 
         @Override
         protected String doInBackground(Void... params) {
-            Hashtable<String,String> param = new Hashtable<>();
-            param.put("evento","desconectarse_conductor");
-            param.put("id",id+"");
-            param.put("token",nombre);
+            Hashtable<String, String> param = new Hashtable<>();
+            param.put("evento", "desconectarse_conductor");
+            param.put("id", id + "");
+            param.put("token", nombre);
             String respuesta = HttpConnection.sendRequest(new StandarRequestConfiguration(getString(R.string.url_servlet_index), MethodType.POST, param));
             return respuesta;
         }

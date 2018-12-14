@@ -3,23 +3,42 @@
     android:id="@+id/header"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:clickable="true">
+    android:clickable="true"
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="240dp"
+        android:layout_alignParentBottom="true"
         android:background="@drawable/color_degradiente"
         android:gravity="center"
-        android:orientation="horizontal"
-        android:layout_alignParentBottom="true">
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
             android:layout_weight="1"
-            android:orientation="vertical">
+            android:layout_marginTop="20dp"
+            android:gravity="center|start"
+            android:orientation="vertical"
+            android:paddingStart="20dp">
+
+            <com.mikhaellopez.circularimageview.CircularImageView
+                android:id="@+id/arrow"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_alignParentRight="true"
+                android:src="@drawable/ic_icon_perfil" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:paddingStart="20dp">
 
             <TextView
                 android:id="@+id/barnombre"
@@ -34,23 +53,17 @@
                 android:id="@+id/bartelefono"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
                 android:text=""
                 android:textColor="@color/colorBlack"
-                android:layout_marginEnd="10dp"
                 android:textSize="14sp" />
+
 
         </LinearLayout>
 
-        <ImageView
-            android:id="@+id/arrow"
-            android:layout_width="56dp"
-            android:layout_height="56dp"
-            android:layout_marginEnd="8dp"
-            android:background="@color/colorWhite"
-            android:layout_alignParentRight="true"
-            android:src="@drawable/ic_redondo1_finalizar" />
 
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -62,15 +75,15 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginEnd="10dp"
-            android:gravity="center"
             android:layout_marginTop="20dp"
+            android:gravity="center"
             android:orientation="horizontal">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Inicio"
                 android:layout_weight="1"
+                android:text="Inicio"
                 android:textAlignment="center"
                 android:textColor="@color/colorBlack"
                 android:textSize="18sp" />
@@ -82,12 +95,12 @@
 
         </LinearLayout>
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:background="@color/grey_10" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/grey_10" />
 
 
         <LinearLayout
@@ -101,8 +114,8 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Perfil"
                 android:layout_weight="1"
+                android:text="Cuenta"
                 android:textAlignment="center"
                 android:textColor="@color/colorBlack"
                 android:textSize="18sp" />
@@ -110,14 +123,14 @@
             <ImageView
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:background="@drawable/ic_icon_perfil_moto"/>
+                android:background="@drawable/ic_icon_perfil_moto" />
         </LinearLayout>
 
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
             android:background="@color/grey_10" />
 
         <LinearLayout
@@ -131,8 +144,8 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Historial"
                 android:layout_weight="1"
+                android:text="Historial"
                 android:textAlignment="center"
                 android:textColor="@color/colorBlack"
                 android:textSize="18sp" />
@@ -143,44 +156,45 @@
                 android:background="@drawable/ic_icon_viajes_moto" />
 
         </LinearLayout>
+
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
             android:background="@color/grey_10" />
 
 
-            <LinearLayout
-                android:id="@+id/btn_nav_formaspago"
+        <LinearLayout
+            android:id="@+id/btn_nav_formaspago"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginEnd="10dp"
+            android:gravity="center"
+
+            android:orientation="horizontal">
+
+            <TextView
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginEnd="10dp"
-                android:gravity="center"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Billetera"
+                android:textAlignment="center"
+                android:textColor="@color/colorBlack"
+                android:textSize="18sp" />
 
-                android:orientation="horizontal">
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/ic_icon_imoto" />
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Transacciones"
-                    android:layout_weight="1"
-                    android:textAlignment="center"
-                    android:textColor="@color/colorBlack"
-                    android:textSize="18sp" />
-
-                <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:background="@drawable/ic_icon_imoto" />
-
-            </LinearLayout>
+        </LinearLayout>
 
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
             android:background="@color/grey_10" />
 
         <LinearLayout
@@ -194,9 +208,9 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Preferencias"
-                android:textAlignment="center"
                 android:layout_weight="1"
+                android:text="Configuración"
+                android:textAlignment="center"
                 android:textColor="@color/colorBlack"
                 android:textSize="18sp" />
 

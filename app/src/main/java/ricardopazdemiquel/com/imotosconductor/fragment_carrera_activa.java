@@ -67,8 +67,6 @@ public class fragment_carrera_activa extends Fragment implements View.OnClickLis
                 new obtener_activos().execute();
 
             }
-
-
         }
         return view;
     }

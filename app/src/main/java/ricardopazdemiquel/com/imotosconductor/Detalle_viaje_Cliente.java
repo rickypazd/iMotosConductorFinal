@@ -2,6 +2,9 @@ package ricardopazdemiquel.com.imotosconductor;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.location.Address;
 import android.location.Geocoder;
 import android.os.AsyncTask;
@@ -21,6 +24,9 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
 import java.util.Hashtable;
 import java.util.List;
 import java.util.Locale;
@@ -34,7 +40,7 @@ import ricardopazdemiquel.com.imotosconductor.utiles.Contexto;
 public class Detalle_viaje_Cliente extends AppCompatActivity {
 
     private TextView nombre;
-    private ImageView fotoConductor;
+    private com.mikhaellopez.circularimageview.CircularImageView fotoConductor;
     private TextView placa_numerotelefono;
     private TextView direccion_inicio;
     private TextView direccion_final;
@@ -76,12 +82,24 @@ public class Detalle_viaje_Cliente extends AppCompatActivity {
         if(intent != null){
             final String id_carrera = intent.getStringExtra("id_carrera");
             new get_viaje_detalle(id_carrera).execute();
+            cargarFoto();
             btn_ver_recorrido.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     verViaje(Integer.parseInt(id_carrera));
                 }
             });
+        }
+    }
+
+    private void cargarFoto(){
+        final JSONObject usr_log = getUsr_log();
+        try {
+            if(usr_log.getString("foto_perfil").length()>0){
+                new AsyncTaskLoadImage(fotoConductor).execute(getString(R.string.url_foto)+usr_log.getString("foto_perfil"));
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
         }
     }
 
@@ -100,6 +118,22 @@ public class Detalle_viaje_Cliente extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         finish();
+    }
+
+    public JSONObject getUsr_log() {
+        SharedPreferences preferencias = getSharedPreferences("myPref", MODE_PRIVATE);
+        String usr = preferencias.getString("usr_log", "");
+        if (usr.length() <= 0) {
+            return null;
+        } else {
+            try {
+                JSONObject usr_log = new JSONObject(usr);
+                return usr_log;
+            } catch (JSONException e) {
+                e.printStackTrace();
+                return null;
+            }
+        }
     }
 
 
@@ -202,12 +236,12 @@ public class Detalle_viaje_Cliente extends AppCompatActivity {
                         html_detalle += "<p>Total</p>";
 
                         if(get_estado(estado)){
-                            direccion_inicio.setText(getCompleteAddressString(latinicial,lnginicial));
-                            direccion_final.setText(getCompleteAddressString(lat_final_real,lng_final_real));
+                            direccion_inicio.setText(getCompleteAddressString(latinicial, lnginicial).replaceAll("\n" , ""));
+                            direccion_final.setText(getCompleteAddressString(lat_final_real, lng_final_real).replaceAll("\n" , ""));
                             html_costo += "<p>"+costo+" Bs.</p>";
                         }else if(!get_estado(estado)){
-                            direccion_inicio.setText(getCompleteAddressString(latinicial,lnginicial));
-                            direccion_final.setText(getCompleteAddressString(latfinal,lngfinal));
+                            direccion_inicio.setText(getCompleteAddressString(latinicial, lnginicial).replaceAll("\n" , ""));
+                            direccion_final.setText(getCompleteAddressString(latfinal, lngfinal).replaceAll("\n" , ""));
                             html_costo += "<p>0 Bs.</p>";
                         }
                         html_tipos.setText(Html.fromHtml(html_detalle), TextView.BufferType.SPANNABLE);
@@ -268,5 +302,28 @@ public class Detalle_viaje_Cliente extends AppCompatActivity {
         Intent intent = new Intent(Detalle_viaje_Cliente.this,PerfilCarrera.class);
         intent.putExtra("id_carrera",id);
         startActivity(intent);
+    }
+
+    public class AsyncTaskLoadImage  extends AsyncTask<String, String, Bitmap> {
+        private final static String TAG = "AsyncTaskLoadImage";
+        private ImageView imageView;
+        public AsyncTaskLoadImage(ImageView imageView) {
+            this.imageView = imageView;
+        }
+        @Override
+        protected Bitmap doInBackground(String... params) {
+            Bitmap bitmap = null;
+            try {
+                URL url = new URL(params[0]);
+                bitmap = BitmapFactory.decodeStream((InputStream)url.getContent());
+            } catch (IOException e) {
+                Log.e(TAG, e.getMessage());
+            }
+            return bitmap;
+        }
+        @Override
+        protected void onPostExecute(Bitmap bitmap) {
+            imageView.setImageBitmap(bitmap);
+        }
     }
 }

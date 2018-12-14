@@ -5,114 +5,122 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".veiheabor">
+
     <android.support.design.widget.CoordinatorLayout
+        android:id="@+id/main_content"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-            android:id="@+id/main_content"
-        android:rotation="180"
-
-        >
+        android:rotation="180">
 
         <LinearLayout
             android:id="@+id/bottom_sheet"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:clipToPadding="true"
-            app:behavior_peekHeight="55dp"
             android:background="@android:color/holo_orange_light"
             android:clipChildren="true"
-            app:layout_behavior="utiles.BehaviorCuston"
-            >
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:gravity="bottom"
-        android:rotation="180"
-        >
-
-        <ScrollView
-            android:id="@+id/lista_veih"
-            android:layout_width="match_parent"
-            android:layout_height="350sp">
+            android:clipToPadding="true"
+            app:behavior_peekHeight="55dp"
+            app:layout_behavior="utiles.BehaviorCuston">
 
             <LinearLayout
-                android:id="@+id/itens"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:gravity="bottom"
+                android:orientation="vertical"
+                android:rotation="180">
 
-                <TextView
+                <ScrollView
+                    android:id="@+id/lista_veih"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="16dp"
+                    android:layout_height="350sp">
 
-                    android:text="reato"
-                    android:textSize="16sp" />
+                    <LinearLayout
+                        android:id="@+id/itens"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="16dp"
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:padding="16dp"
 
-                    android:text="Productos"
-                    android:textSize="16sp" />
+                            android:text="reato"
+                            android:textSize="16sp" />
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="16dp"
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:padding="16dp"
 
-                    android:text="reasddto"
-                    android:textSize="16sp" />
+                            android:text="Productos"
+                            android:textSize="16sp" />
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="16dp"
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:padding="16dp"
 
-                    android:text="reasddto"
-                    android:textSize="16sp" />
+                            android:text="reasddto"
+                            android:textSize="16sp" />
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="16dp"
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:padding="16dp"
 
-                    android:text="reasddto"
-                    android:textSize="16sp" />
+                            android:text="reasddto"
+                            android:textSize="16sp" />
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="16dp"
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:padding="16dp"
 
-                    android:text="reasddto"
-                    android:textSize="16sp" />
+                            android:text="reasddto"
+                            android:textSize="16sp" />
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="16dp"
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:padding="16dp"
 
-                    android:text="reasddto"
-                    android:textSize="16sp" />
+                            android:text="reasddto"
+                            android:textSize="16sp" />
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="16dp"
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:padding="16dp"
 
-                    android:text="reasddto"
-                    android:textSize="16sp" />
+                            android:text="reasddto"
+                            android:textSize="16sp" />
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="16dp"
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:padding="16dp"
 
-                    android:text="reasddto"
-                    android:textSize="16sp" />
+                            android:text="reasddto"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:padding="16dp"
+
+                            android:text="reasddto"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:padding="16dp"
+
+                            android:text="reasddto"
+                            android:textSize="16sp" />
+                    </LinearLayout>
+                </ScrollView>
 
                 <TextView
                     android:layout_width="match_parent"
@@ -122,15 +130,6 @@
                     android:text="reasddto"
                     android:textSize="16sp" />
             </LinearLayout>
-        </ScrollView>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="16dp"
-
-            android:text="reasddto"
-            android:textSize="16sp" />
-    </LinearLayout>
 
         </LinearLayout>
     </android.support.design.widget.CoordinatorLayout>

@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="#fafafa"
+    android:orientation="vertical"
     tools:context=".Perfil_Conductor">
 
     <android.support.v7.widget.Toolbar
@@ -14,35 +14,34 @@
         android:layout_height="wrap_content"
         android:background="@drawable/backgroundcolor2"
         app:title="Perfil"
-        app:titleTextColor="@color/colorWhite"
-        tools:layout_editor_absoluteY="0dp"
-        tools:layout_editor_absoluteX="8dp">
-    </android.support.v7.widget.Toolbar>
+        app:titleTextColor="@color/colorBlack"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="0dp"></android.support.v7.widget.Toolbar>
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <RelativeLayout
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="200dp"
+                android:background="@drawable/backgroundcolor2"
+                android:orientation="horizontal">
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="200dp"
-                    android:background="@drawable/backgroundcolor2"
-                    android:orientation="vertical">
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center">
 
                     <RelativeLayout
-                        android:layout_width="120dp"
-                        android:layout_height="120dp"
-                        android:layout_gravity="center_horizontal">
+                        android:layout_width="150dp"
+                        android:layout_height="150dp">
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -52,8 +51,8 @@
 
                             <ImageView
                                 android:id="@+id/btn_edit_fto"
-                                android:layout_width="30dp"
-                                android:layout_height="30dp"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
                                 android:src="@drawable/edit_pencil" />
                         </LinearLayout>
 
@@ -61,7 +60,7 @@
                             android:id="@+id/img_photo"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:src="@mipmap/ic_miperfil">
+                            android:src="@drawable/ic_icon_perfil">
 
                         </com.mikhaellopez.circularimageview.CircularImageView>
 
@@ -69,57 +68,39 @@
 
                 </LinearLayout>
 
-                <android.support.v7.widget.CardView
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="100dp"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginBottom="20dp"
-                    android:layout_marginEnd="40dp"
-                    android:layout_marginStart="40dp"
-                    android:layout_marginTop="150dp"
-                    android:background="@color/colorWhite"
-                    app:cardCornerRadius="10dp"
-                    app:cardElevation="5dp">
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="horizontal"
-                        android:weightSum="3">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Créditos"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="20sp" />
 
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:gravity="center"
-                            android:orientation="vertical">
+                    <TextView
+                        android:id="@+id/creditos"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="10dp"
+                        android:text=""
+                        android:textColor="@color/colorGris"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
 
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Créditos"
-                                android:textSize="20sp" />
+                </LinearLayout>
 
-                            <TextView
-                                android:id="@+id/creditos"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:paddingTop="10dp"
-                                android:text="360"
-                                android:textColor="@color/colorPrimary"
-                                android:textSize="20sp"
-                                android:textStyle="bold" />
-
-                        </LinearLayout>
-                    </LinearLayout>
-
-                </android.support.v7.widget.CardView>
-
-            </RelativeLayout>
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:layout_marginTop="20dp"
                 android:orientation="vertical">
 
                 <LinearLayout
@@ -138,7 +119,7 @@
                         android:paddingLeft="20dp"
                         android:text="Nombre"
                         android:textAlignment="textStart"
-                        android:textColor="@color/colorPrimary"
+                        android:textColor="@color/colorBlack"
                         android:textSize="15sp" />
 
                     <TextView
@@ -153,8 +134,8 @@
                         android:paddingEnd="20dp"
                         android:paddingLeft="20dp"
                         android:paddingTop="5dp"
-                        android:text=""
-                        android:textColor="#626262"
+                        android:text="sdfsdf"
+                        android:textColor="#424242"
                         android:textSize="18sp" />
 
                 </LinearLayout>
@@ -162,10 +143,10 @@
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
+                    android:layout_marginBottom="10dp"
                     android:layout_marginLeft="@dimen/spacing_large"
                     android:layout_marginRight="@dimen/spacing_large"
                     android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp"
                     android:background="@color/grey_10" />
 
                 <LinearLayout
@@ -185,7 +166,7 @@
                         android:paddingLeft="20dp"
                         android:text="Apellido"
                         android:textAlignment="textStart"
-                        android:textColor="@color/colorPrimary"
+                        android:textColor="@color/colorBlack"
                         android:textSize="15sp" />
 
                     <TextView
@@ -196,11 +177,11 @@
                         android:autoSizeMinTextSize="12sp"
                         android:autoSizeStepGranularity="2sp"
                         android:autoSizeTextType="uniform"
-                        android:paddingTop="5dp"
                         android:drawableEnd="@drawable/ic_pencil_edit"
                         android:paddingEnd="20dp"
                         android:paddingLeft="20dp"
-                        android:textColor="#626262"
+                        android:paddingTop="5dp"
+                        android:textColor="#424242"
                         android:textSize="18sp" />
 
                 </LinearLayout>
@@ -208,10 +189,10 @@
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
+                    android:layout_marginBottom="10dp"
                     android:layout_marginLeft="@dimen/spacing_large"
                     android:layout_marginRight="@dimen/spacing_large"
                     android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp"
                     android:background="@color/grey_10" />
 
                 <LinearLayout
@@ -230,7 +211,7 @@
                         android:paddingLeft="20dp"
                         android:text="Número de teléfono"
                         android:textAlignment="textStart"
-                        android:textColor="@color/colorPrimary"
+                        android:textColor="@color/colorBlack"
                         android:textSize="15sp" />
 
                     <LinearLayout
@@ -250,18 +231,17 @@
                             android:drawableLeft="@drawable/ic_banderabolivia_siete"
                             android:drawablePadding="6dp"
                             android:gravity="center|start"
-                            android:paddingTop="5dp"
                             android:paddingEnd="20dp"
                             android:paddingStart="20dp"
-                            android:textColor="#626262"
+                            android:paddingTop="5dp"
+                            android:textColor="#424242"
                             android:textSize="18sp" />
 
                         <ImageView
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:layout_marginEnd="20dp"
-                            android:src="@drawable/ic_pencil_edit"
-                            />
+                            android:src="@drawable/ic_pencil_edit" />
 
                     </LinearLayout>
 
@@ -271,16 +251,17 @@
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
+                    android:layout_marginBottom="10dp"
                     android:layout_marginLeft="@dimen/spacing_large"
                     android:layout_marginRight="@dimen/spacing_large"
                     android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp"
                     android:background="@color/grey_10" />
 
                 <LinearLayout
                     android:id="@+id/Liner_correo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
                     android:orientation="vertical">
 
                     <TextView
@@ -293,7 +274,7 @@
                         android:paddingLeft="20dp"
                         android:text="E-mail"
                         android:textAlignment="textStart"
-                        android:textColor="@color/colorPrimary"
+                        android:textColor="@color/colorBlack"
                         android:textSize="15sp" />
 
                     <TextView
@@ -305,11 +286,11 @@
                         android:autoSizeMinTextSize="12sp"
                         android:autoSizeStepGranularity="2sp"
                         android:autoSizeTextType="uniform"
-                        android:paddingTop="5dp"
                         android:drawableEnd="@drawable/ic_pencil_edit"
                         android:paddingEnd="20dp"
                         android:paddingLeft="20dp"
-                        android:textColor="#626262"
+                        android:paddingTop="5dp"
+                        android:textColor="#424242"
                         android:textSize="18sp" />
                 </LinearLayout>
             </LinearLayout>
