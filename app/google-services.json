@@ -1,0 +1,73 @@
+{
+  "project_info": {
+    "project_number": "149384123906",
+    "firebase_url": "https://imoto-ef8ee.firebaseio.com",
+    "project_id": "imoto-ef8ee",
+    "storage_bucket": "imoto-ef8ee.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:149384123906:android:8536d196fa83faa8",
+        "android_client_info": {
+          "package_name": "ricardopazdemiquel.com.imotos"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "149384123906-93l3q8rvt9hf5daoe33gu42st5bl18k6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCk-TZbbpld6NWtW8ppOj8qiCFZe3eE-zs"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:149384123906:android:6096ad40656da2d2",
+        "android_client_info": {
+          "package_name": "ricardopazdemiquel.com.imotosconductor"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "149384123906-93l3q8rvt9hf5daoe33gu42st5bl18k6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCk-TZbbpld6NWtW8ppOj8qiCFZe3eE-zs"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
