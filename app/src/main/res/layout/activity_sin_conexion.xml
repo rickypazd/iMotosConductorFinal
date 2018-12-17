@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/fondoconfirmar"
-    tools:context=".Sin_conexion"
+    tools:context="ricardopazdemiquel.com.imotosconductorFinal.Sin_conexion"
     >
 
     <TextView

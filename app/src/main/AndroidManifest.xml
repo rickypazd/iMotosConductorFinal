@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="ricardopazdemiquel.com.imotosconductor">
+    package="ricardopazdemiquel.com.imotosconductorFinal">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
@@ -40,9 +40,9 @@
             android:enabled="true"
             android:exported="false" />
         <service
-            android:name="utiles.GPS_service"
+            android:name="ricardopazdemiquel.com.imotosconductorFinal.utiles.GPS_service"
             android:exported="false" />
-        <service android:name="utiles.ForegroundService" />
+        <service android:name="ricardopazdemiquel.com.imotosconductorFinal.utiles.ForegroundService" />
         <service android:name=".Services.FirebaseService">
             <intent-filter>
                 <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
@@ -55,7 +55,7 @@
         </service>
 
         <activity
-            android:name=".Cofirmar_Carrera"
+            android:name="ricardopazdemiquel.com.imotosconductorFinal.Cofirmar_Carrera"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
@@ -79,7 +79,7 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".Detalle_viaje_Cliente"
+            android:name="ricardopazdemiquel.com.imotosconductorFinal.Detalle_viaje_Cliente"
             android:label="Detalle del viaje"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
@@ -100,11 +100,11 @@
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
-            android:name=".Sin_conexion"
+            android:name="ricardopazdemiquel.com.imotosconductorFinal.Sin_conexion"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
-            android:name=".CancelarConductor"
+            android:name="ricardopazdemiquel.com.imotosconductorFinal.CancelarConductor"
             android:label="Cancelar viaje"
             android:screenOrientation="portrait" />
         <activity
@@ -112,7 +112,7 @@
             android:label="Cancelar viaje"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Perfil_Conductor"
+            android:name="ricardopazdemiquel.com.imotosconductorFinal.Perfil_Conductor"
             android:screenOrientation="portrait"
             android:label="Mi Perfil"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
@@ -134,7 +134,7 @@
             android:name=".CostosExtras"
             android:label="Costos extras" />
 
-        <activity android:name=".Chat_Activity"
+        <activity android:name="ricardopazdemiquel.com.imotosconductorFinal.Chat_Activity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:screenOrientation="portrait"></activity>
 
@@ -144,7 +144,7 @@
             android:screenOrientation="portrait"></activity>
 
 
-        <activity android:name=".Transaccion_cliente_Activity"
+        <activity android:name="ricardopazdemiquel.com.imotosconductorFinal.Transaccion_cliente_Activity"
             android:label="Créditos"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:screenOrientation="portrait"></activity>

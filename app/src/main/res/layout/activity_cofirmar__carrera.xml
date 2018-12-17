@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:gravity="center_horizontal"
     android:orientation="vertical"
-    tools:context=".Cofirmar_Carrera">
+    tools:context="ricardopazdemiquel.com.imotosconductorFinal.Cofirmar_Carrera">
 
     <TextView
         android:id="@+id/tv_tipo_siete"

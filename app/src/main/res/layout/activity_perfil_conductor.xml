@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="#fafafa"
     android:orientation="vertical"
-    tools:context=".Perfil_Conductor">
+    tools:context="ricardopazdemiquel.com.imotosconductorFinal.Perfil_Conductor">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar3aa"
