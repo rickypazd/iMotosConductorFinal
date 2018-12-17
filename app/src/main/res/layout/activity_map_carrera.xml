@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-android:layout_height="match_parent">
+    android:layout_height="match_parent">
 
     <com.google.android.gms.maps.MapView
         android:id="@+id/mapviewcarrera"
@@ -22,6 +21,7 @@ android:layout_height="match_parent">
         android:scaleType="centerCrop"
         android:src="@drawable/wazel"
         android:text="Select"
+        android:visibility="gone"
         app:backgroundTint="@android:color/background_light"
         app:elevation="24dp"
         app:fabSize="normal" />
@@ -39,6 +39,7 @@ android:layout_height="match_parent">
         android:src="@drawable/google"
         app:elevation="24dp"
         app:fabSize="normal" />
+
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -59,10 +60,11 @@ android:layout_height="match_parent">
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
         <Button
             android:id="@+id/btn_cancelar_carrera"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
             android:layout_marginBottom="28dp"
             android:layout_marginEnd="152dp"
             android:layout_marginStart="8dp"
@@ -161,7 +163,8 @@ android:layout_height="match_parent">
             android:id="@+id/Container_verPerfil"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:visibility="gone">
+            android:translationZ="999dp"
+            android:visibility="visible">
 
             <LinearLayout
                 android:id="@+id/button_sheet"
@@ -170,110 +173,158 @@ android:layout_height="match_parent">
                 android:background="@color/colorPrimary2"
                 app:behavior_hideable="true"
                 app:behavior_peekHeight="55dp"
-
                 app:layout_behavior="@string/bottom_sheet_behavior">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@drawable/backgroundcolor2"
+                    android:background="@color/colorWhite"
                     android:orientation="vertical">
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="55dp"
+                        android:background="@color/colorPrimary2"
                         android:gravity="center"
-                        android:text="Ver perfil"
+                        android:text="Ver cliente"
                         android:textAlignment="center"
                         android:textColor="@color/colorBlack"
                         android:textSize="22dp" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="30dp"
+                        android:layout_marginTop="10dp"
+                        android:gravity="center|start"
                         android:orientation="horizontal">
 
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:gravity="center">
-
-                            <Button
-                                android:id="@+id/btn_llamar"
-                                android:layout_width="60dp"
-                                android:layout_height="60dp"
-                                android:layout_gravity="center"
-                                android:background="@drawable/ic_logo_phone"
-                                android:drawableStart="@drawable/ic_telefono"
-                                android:padding="17dp" />
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:gravity="center">
-
-                            <ImageView
-                                android:id="@+id/img_foto"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_gravity="center"
-                                android:drawableStart="@drawable/ic_sobre"
-                                android:padding="17dp"
-                                android:src="@mipmap/ic_miperfil_round" />
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:gravity="center">
-
-                            <Button
-                                android:id="@+id/btn_enviar_mensaje"
-                                android:layout_width="60dp"
-                                android:layout_height="60dp"
-                                android:layout_gravity="center"
-                                android:background="@drawable/ic_logo_phone"
-                                android:drawableStart="@drawable/ic_sobre"
-                                android:padding="17dp" />
-
-                        </LinearLayout>
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginEnd="40dp"
-                        android:layout_marginStart="40dp"
-                        android:layout_weight="1.1"
-                        android:gravity="center">
+                        <com.mikhaellopez.circularimageview.CircularImageView
+                            android:id="@+id/img_photo"
+                            android:layout_width="120dp"
+                            android:layout_height="120dp"
+                            android:src="@drawable/ic_icon_perfil"></com.mikhaellopez.circularimageview.CircularImageView>
 
                         <TextView
-                            android:id="@+id/text_nombreCliente"
+                            android:id="@+id/text_Viajes"
                             android:layout_width="match_parent"
-                            android:layout_height="45dp"
-                            android:background="@drawable/ic_redondo1_finalizar"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="20dp"
+                            android:layout_marginTop="20dp"
                             android:gravity="center"
-                            android:inputType="textPersonName"
+                            android:text="Completo 45 carreras"
+                            android:textAlignment="center"
                             android:textColor="@color/colorBlack"
                             android:textSize="18dp" />
 
                     </LinearLayout>
 
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/grey_10" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginEnd="40dp"
-                        android:layout_marginStart="40dp"
-                        android:layout_weight="1.1"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="30dp"
+                        android:layout_marginStart="30dp"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="45dp"
+                            android:layout_weight="1"
+                            android:gravity="start|center"
+                            android:inputType="textPersonName"
+                            android:text="LLAMAR"
+                            android:textColor="@color/colorPrimary2"
+                            android:textSize="18dp"
+                            android:textStyle="bold" />
+
+                        <ImageView
+                            android:id="@+id/btn_llamar"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:padding="10dp"
+                            android:src="@drawable/ic_phone2" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="30dp"
+                        android:layout_marginStart="30dp"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="45dp"
+                            android:layout_weight="1"
+                            android:gravity="start|center"
+                            android:inputType="textPersonName"
+                            android:text="MENSAJE"
+                            android:textColor="@color/colorPrimary2"
+                            android:textSize="18dp"
+                            android:textStyle="bold" />
+
+                        <ImageView
+                            android:id="@+id/btn_enviar_mensaje"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:layout_gravity="center"
+                            android:drawableStart="@drawable/ic_sobre"
+                            android:padding="10dp"
+                            android:src="@drawable/ic_chat" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/grey_10" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="45dp"
+                            android:gravity="center"
+                            android:inputType="textPersonName"
+                            android:text="CLIENTE"
+                            android:textColor="@color/colorPrimary2"
+                            android:textSize="18dp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/text_nombreCliente"
+                            android:layout_width="match_parent"
+                            android:layout_height="45dp"
+                            android:gravity="center"
+                            android:inputType="textPersonName"
+                            android:text=""
+                            android:textColor="@color/colorBlack"
+                            android:textSize="18dp" />
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/grey_10" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="20dp"
+                        android:layout_marginStart="20dp"
+                        android:layout_weight="1"
                         android:orientation="horizontal">
 
                         <TextView
@@ -282,8 +333,9 @@ android:layout_height="match_parent">
                             android:layout_height="45dp"
                             android:layout_gravity="center"
                             android:layout_weight="1"
-                            android:background="@drawable/botonred"
+                            android:background="@drawable/backgroundcolor2"
                             android:gravity="center"
+                            android:layout_marginEnd="5dp"
                             android:inputType="textPersonName"
                             android:textColor="@color/colorBlack"
                             android:textSize="15dp" />
@@ -293,36 +345,15 @@ android:layout_height="match_parent">
                             android:layout_width="match_parent"
                             android:layout_height="45dp"
                             android:layout_gravity="center"
-                            android:layout_marginStart="20dp"
+                            android:layout_marginStart="5dp"
                             android:layout_weight="1"
-                            android:background="@drawable/botonred"
+                            android:background="@drawable/backgroundcolor2"
                             android:gravity="center"
                             android:inputType="textPersonName"
                             android:textColor="@color/colorBlack"
                             android:textSize="15dp" />
 
                     </LinearLayout>
-
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1.04"
-                        android:gravity="center"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:id="@+id/text_Viajes"
-                            android:layout_width="match_parent"
-                            android:layout_height="40dp"
-                            android:gravity="center"
-                            android:text="Ha completado 256 viajes"
-                            android:textAlignment="center"
-                            android:textColor="#000"
-                            android:textSize="20dp" />
-
-                    </LinearLayout>
-
 
                 </LinearLayout>
 
@@ -337,7 +368,7 @@ android:layout_height="match_parent">
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:visibility="visible">
+        android:visibility="gone">
 
         <FrameLayout
             android:layout_width="match_parent"

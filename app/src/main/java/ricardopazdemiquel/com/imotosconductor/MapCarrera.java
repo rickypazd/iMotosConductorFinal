@@ -102,7 +102,7 @@ public class MapCarrera extends AppCompatActivity implements LocationListener, S
     private double latwazefinal;
     private double lngwazefinal;
     //PERFIL DEL CLIENTE
-    private ImageView img_foto;
+    private com.mikhaellopez.circularimageview.CircularImageView img_foto;
     private TextView text_nombreCliente;
     private TextView text_data1;
     private TextView text_data2;
