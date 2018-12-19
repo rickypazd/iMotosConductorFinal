@@ -74,6 +74,7 @@ import java.util.Hashtable;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
+import ricardopazdemiquel.com.imotosconductorFinal.Dialog.Ver_Producto_Dialog;
 import ricardopazdemiquel.com.imotosconductorFinal.R;
 import ricardopazdemiquel.com.imotosconductorFinal.clienteHTTP.HttpConnection;
 import ricardopazdemiquel.com.imotosconductorFinal.clienteHTTP.MethodType;
@@ -108,8 +109,13 @@ public class MapCarrera extends AppCompatActivity implements LocationListener, S
     private TextView text_data1;
     private TextView text_data2;
     private TextView text_Viajes;
-    private Button btn_enviar_mensaje;
-    private Button btn_llamar;
+    private ImageView btn_enviar_mensaje;
+    private ImageView btn_llamar;
+    // MENSAJE
+    private LinearLayout liner_mensaje;
+    private Button btn_mensaje;
+    private String mensaje;
+
     ///////
     private Button btn_terminar_carrera;
     private Button btn_cancelar_carrera;
@@ -147,6 +153,10 @@ public class MapCarrera extends AppCompatActivity implements LocationListener, S
         cargandomapaline = findViewById(R.id.cargandomapaline);
         btn_llamar = findViewById(R.id.btn_llamar);
         btn_enviar_mensaje = findViewById(R.id.btn_enviar_mensaje);
+        liner_mensaje = findViewById(R.id.liner_mensaje);
+        btn_mensaje = findViewById(R.id.btn_mensaje);
+
+
         bottomSheetBehavior = BottomSheetBehavior.from(view);
         bottomSheetBehavior.setBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback() {
             @Override
@@ -388,7 +398,7 @@ public class MapCarrera extends AppCompatActivity implements LocationListener, S
     private float dist = 0;
     private boolean hilo;
     private JSONObject cliente;
-
+    private float result[] = new float[1];
     private void hilo() {
         hilo = true;
 
@@ -412,13 +422,19 @@ public class MapCarrera extends AppCompatActivity implements LocationListener, S
                                                 latlng1 = new LatLng(location.getLatitude(), location.getLongitude());
                                                 latwazefinal = latlng2.latitude;
                                                 lngwazefinal = latlng2.longitude;
+                                                Location.distanceBetween(latlng1.latitude, latlng1.longitude, latlng2.latitude, latlng2.longitude, result);
+                                                if (result[0] <= 40) {
+                                                    notificacionReciber(null);
+                                                }
                                             } else if (carrera.getInt("estado") == 4) {
                                                 btn_cancelar_carrera.setVisibility(View.INVISIBLE);
                                                 latlng2 = new LatLng(carrera.getDouble("latfinal"), carrera.getDouble("lngfinal"));
                                                 latlng1 = new LatLng(location.getLatitude(), location.getLongitude());
                                                 latwazefinal = latlng2.latitude;
                                                 lngwazefinal = latlng2.longitude;
+                                                linear_Iniciar_Carrera.setVisibility(View.GONE);
                                                 btn_terminar_carrera.setVisibility(View.VISIBLE);
+                                                Container_verPerfil.setVisibility(View.VISIBLE);
                                                // btn_costos_extras.setVisibility(View.VISIBLE);
                                             } else if (carrera.getInt("estado") == 3) {
                                                 btn_cancelar_carrera.setVisibility(View.INVISIBLE);
@@ -622,6 +638,17 @@ public class MapCarrera extends AppCompatActivity implements LocationListener, S
 
 
                     carrera = obj;
+                    if (carrera.getInt("id_tipo") == 2) {
+                        mensaje = carrera.getString("mensaje_str");
+                        liner_mensaje.setVisibility(View.VISIBLE);
+                    }
+                    btn_mensaje.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            android.app.FragmentManager fragmentManager = getFragmentManager();
+                            new Ver_Producto_Dialog(mensaje).show(fragmentManager, "Dialog");
+                        }
+                    });
                     SharedPreferences preferencias = getSharedPreferences("myPref", MODE_PRIVATE);
                     SharedPreferences.Editor editor = preferencias.edit();
                     editor.putString("carrera", obj.toString());

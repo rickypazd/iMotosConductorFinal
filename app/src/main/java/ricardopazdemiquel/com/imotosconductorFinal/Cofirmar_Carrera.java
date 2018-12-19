@@ -54,6 +54,8 @@ public class Cofirmar_Carrera extends AppCompatActivity {
         setContentView(R.layout.activity_cofirmar__carrera);
         tiempo_espera=10000;
         btn_aceptar=findViewById(R.id.btn_aceptar_Carrera);
+        btn_rechazar=findViewById(R.id.btn_rechazar_Carrera);
+
         tv_tipo_siete=findViewById(R.id.tv_tipo_siete);
         nombre =findViewById(R.id.editName);
         inicio =findViewById(R.id.editInicio);
@@ -125,6 +127,15 @@ public class Cofirmar_Carrera extends AppCompatActivity {
 
                 }
             }, tiempo_espera);
+            btn_rechazar.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    cancelNotification(Cofirmar_Carrera.this,10);
+                    Intent returnIntent = new Intent();
+                    setResult(Activity.RESULT_CANCELED, returnIntent);
+                    finish();
+                }
+            });
         }
     }
     public JSONObject getUsr_log() {
