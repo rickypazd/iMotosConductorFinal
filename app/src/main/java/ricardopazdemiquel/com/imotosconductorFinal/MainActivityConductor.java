@@ -257,6 +257,13 @@ public class MainActivityConductor extends AppCompatActivity
         if(requestCode == 100){
             if( grantResults[0] == PackageManager.PERMISSION_GRANTED && grantResults[1] == PackageManager.PERMISSION_GRANTED){
                 Intent i =new Intent(getApplicationContext(),MapService2.class);
+                try {
+                    i.putExtra("id_vehiculo",obj_turno.getInt("id_vehiculo"));
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                activo.setChecked(true);
+                descativo.setChecked(false);
                 startService(i);
             }else {
                 runtime_permissions();
