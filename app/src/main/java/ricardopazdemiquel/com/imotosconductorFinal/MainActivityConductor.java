@@ -11,6 +11,8 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
@@ -28,16 +30,22 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.mikhaellopez.circularimageview.CircularImageView;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
 import java.util.Hashtable;
 import java.util.concurrent.ExecutionException;
 
@@ -63,6 +71,7 @@ public class MainActivityConductor extends AppCompatActivity
     private LinearLayout btn_nav_preferencias;
     private TextView barnombre;
     private TextView bartelefono;
+    private CircularImageView img_photo;
     private RadioGroup radioGroup;
     private RadioButton activo;
     private RadioButton descativo;
@@ -105,7 +114,7 @@ public class MainActivityConductor extends AppCompatActivity
          usr_log = getUsr_log();
         barnombre=header.findViewById(R.id.barnombre);
         bartelefono=header.findViewById(R.id.bartelefono);
-
+        img_photo =  header.findViewById(R.id.arrow);
         if (usr_log == null) {
             Intent intent = new Intent(MainActivityConductor.this, LoginConductor.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -115,6 +124,9 @@ public class MainActivityConductor extends AppCompatActivity
             try {
                 barnombre.setText(usr_log.getString("nombre")+" "+usr_log.getString("apellido_pa")+" "+usr_log.getString("apellido_ma"));
                 bartelefono.setText("Telefono: "+usr_log.getString("telefono"));
+                if(usr_log.getString("foto_perfil").length()>0){
+                    new AsyncTaskLoadImage(img_photo).execute(getString(R.string.url_foto)+usr_log.getString("foto_perfil"));
+                }
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -172,6 +184,7 @@ public class MainActivityConductor extends AppCompatActivity
             };
         }
         registerReceiver(broadcastReceiverMessage,new IntentFilter("confirmar_carrera"));
+//        Toast.makeText(this,"asdas",Toast.LENGTH_SHORT);
     }
 
 
@@ -667,6 +680,28 @@ public class MainActivityConductor extends AppCompatActivity
         protected void onProgressUpdate(String... values) {
             super.onProgressUpdate(values);
 
+        }
+    }
+    public class AsyncTaskLoadImage  extends AsyncTask<String, String, Bitmap> {
+        private final static String TAG = "AsyncTaskLoadImage";
+        private ImageView imageView;
+        public AsyncTaskLoadImage(ImageView imageView) {
+            this.imageView = imageView;
+        }
+        @Override
+        protected Bitmap doInBackground(String... params) {
+            Bitmap bitmap = null;
+            try {
+                URL url = new URL(params[0]);
+                bitmap = BitmapFactory.decodeStream((InputStream)url.getContent());
+            } catch (IOException e) {
+                Log.e(TAG, e.getMessage());
+            }
+            return bitmap;
+        }
+        @Override
+        protected void onPostExecute(Bitmap bitmap) {
+            imageView.setImageBitmap(bitmap);
         }
     }
 }

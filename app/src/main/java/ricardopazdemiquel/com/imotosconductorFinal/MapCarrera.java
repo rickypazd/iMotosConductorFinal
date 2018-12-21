@@ -867,10 +867,11 @@ public class MapCarrera extends AppCompatActivity implements LocationListener, S
                             }
                         }
                     });
-                    if(cliente.has("foto_perfil")){
-                        if (cliente.getString("foto_perfil").length() > 0) {
-                            new AsyncTaskLoadImage(img_foto).execute(getString(R.string.url_foto) + cliente.getString("foto_perfil"));
-                        }
+                    if(cliente.getString("id_face").length()>0){
+                        //cargar_img_face
+                        String id_face=cliente.getString("id_face");
+                        String url="https://graph.facebook.com/" +id_face+"/picture?type=large";
+                        new AsyncTaskLoadImage(img_foto).execute(url);
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
